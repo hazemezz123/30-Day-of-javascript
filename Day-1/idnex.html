@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
+    <style>
+      html {
+        background: url("https://static.vecteezy.com/system/resources/previews/022/815/907/large_2x/realistic-gradient-color-bokeh-glass-effect-blurshop-background-image-free-photo.jpg")
+          no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .clock {
+        width: 350px;
+        height: 350px;
+        border: 12px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6),
+          inset 0 0 20px rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(4px);
+      }
+
+      .clock-face {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .hand {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: 100%;
+        transform: translateX(-100%) rotate(90deg);
+        transition: all 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+        border-radius: 6px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .hour-hand {
+        width: 30%;
+        height: 6px;
+        background: #8e44ad;
+      }
+
+      .min-hand {
+        width: 40%;
+        height: 4px;
+        background: #c0392b;
+      }
+
+      .second-hand {
+        width: 45%;
+        height: 2px;
+        background: #00ffff;
+      }
+
+      .center-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        border: 2px solid #333;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        box-shadow: 0 0 5px #000;
+      }
+
+      .number {
+        position: absolute;
+        color: white;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px black;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+
+      .number1 {
+        top: 20%;
+        left: 72%;
+      }
+      .number2 {
+        top: 32%;
+        left: 84%;
+      }
+      .number3 {
+        top: 50%;
+        left: 90%;
+      }
+      .number4 {
+        top: 68%;
+        left: 84%;
+      }
+      .number5 {
+        top: 80%;
+        left: 72%;
+      }
+      .number6 {
+        top: 86%;
+        left: 50%;
+      }
+      .number7 {
+        top: 80%;
+        left: 28%;
+      }
+      .number8 {
+        top: 68%;
+        left: 16%;
+      }
+      .number9 {
+        top: 50%;
+        left: 10%;
+      }
+      .number10 {
+        top: 32%;
+        left: 16%;
+      }
+      .number11 {
+        top: 20%;
+        left: 28%;
+      }
+      .number12 {
+        top: 14%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <!-- Hands -->
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+
+        <!-- Center Dot -->
+        <div class="center-dot"></div>
+
+        <!-- Numbers -->
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+      </div>
+    </div>
+
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+
+      function setDate() {
+        const now = new Date();
+
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
+
+        const secondsDegree = (seconds / 60) * 360 + 90;
+        const minutesDegree = (minutes / 60) * 360 + (seconds / 60) * 6 + 90;
+        const hoursDegree =
+          ((hours % 12) / 12) * 360 + (minutes / 60) * 30 + 90;
+
+        if (seconds === 0) {
+          secondHand.style.transition = "none";
+        } else {
+          secondHand.style.transition =
+            "all 0.05s cubic-bezier(0.1, 2.7, 0.58, 1)";
+        }
+
+        secondHand.style.transform = `translateX(-100%) rotate(${secondsDegree}deg)`;
+        minHand.style.transform = `translateX(-100%) rotate(${minutesDegree}deg)`;
+        hourHand.style.transform = `translateX(-100%) rotate(${hoursDegree}deg)`;
+      }
+
+      setInterval(setDate, 1000);
+      setDate();
+    </script>
+  </body>
+</html>
