@@ -65,7 +65,7 @@
         margin-inline: 0.5rem;
         color: #ffdd57;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       .key.playing {
         transform: scale(1.2);
@@ -78,41 +78,42 @@
     <div class="keys">
       <div data-key="65" class="key">
         <kbd>A</kbd>
-        <div class="sound">Clap</div>
+        <div class="sound">A sound</div>
       </div>
       <div data-key="83" class="key">
         <kbd>S</kbd>
-        <div class="sound">HiHat</div>
+        <div class="sound">S sound</div>
       </div>
       <div data-key="68" class="key">
         <kbd>D</kbd>
-        <div class="sound">Kick</div>
+        <div class="sound">D sound</div>
       </div>
       <div data-key="70" class="key">
         <kbd>F</kbd>
-        <div class="sound">OpenHat</div>
+        <div class="sound">F sound</div>
       </div>
       <div data-key="71" class="key">
         <kbd>G</kbd>
-        <div class="sound">Boom</div>
+        <div class="sound">G sound</div>
       </div>
       <div data-key="72" class="key">
         <kbd>H</kbd>
-        <div class="sound">Ride</div>
+        <div class="sound">H sound</div>
       </div>
       <div data-key="74" class="key">
         <kbd>J</kbd>
-        <div class="sound">Snare</div>
+        <div class="sound">J sound</div>
       </div>
       <div class="key" data-key="75">
         <kbd>K</kbd>
-        <div class="sound">Tom</div>
+        <div class="sound">K sound</div>
       </div>
-      <div class="key" data-key="73">
-        <kbd>I</kbd>
-        <div class="sound">Tink</div>
+      <div class="key" data-key="76">
+        <kbd>L</kbd>
+        <div class="sound">L sound</div>
       </div>
     </div>
+
     <audio data-key="65" src="sounds/A.wav" />
     <audio data-key="83" src="sounds/S.wav" />
     <audio data-key="68" src="sounds/D.wav" />
@@ -121,7 +122,7 @@
     <audio data-key="72" src="sounds/H.wav" />
     <audio data-key="74" src="sounds/J.wav" />
     <audio data-key="75" src="sounds/K.wav" />
-    <audio data-key="73" src="sounds/I.wav" />
+    <audio data-key="76" src="sounds/L.wav" />
     <script>
       function playSound(keyCode) {
         const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
